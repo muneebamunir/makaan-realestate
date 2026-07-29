@@ -55,9 +55,15 @@ a:hover{
 }
 
 /* Bootstrap "success/green" utility overrides, in case template uses them anywhere */
-.bg-success, .text-success, .border-success {
+.bg-success {
     background: #000 !important;
+}
+
+.text-success {
     color: #000 !important;
+}
+
+.border-success {
     border-color: #000 !important;
 }
 
