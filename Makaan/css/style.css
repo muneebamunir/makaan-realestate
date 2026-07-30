@@ -30,7 +30,7 @@ a{
 }
 
 a:hover{
-    color:#000;
+    color:#cdbebe;
 }
 
 .icon{
@@ -568,11 +568,15 @@ section .border {
     border-right: none;
 }
 /* ===== Force ALL headings/subheadings/text to Black ===== */
+/* NOTE: a:hover / a:focus removed from this rule on purpose.
+   Buttons in this template are rendered as <a class="btn ...">, so
+   forcing hover/focus text to black here was overriding every
+   button's white hover text (that was the original bug). */
 h1, h2, h3, h4, h5, h6,
 .display-5, .display-6,
 h1 span, h2 span, h3 span, h4 span, h5 span, h6 span,
 .navbar-brand, .navbar-brand h1,
-a, a:hover, a:focus,
+a,
 .nav-link, .dropdown-item,
 .fw-bold {
     color: #000 !important;
@@ -611,4 +615,109 @@ a, a:hover, a:focus,
 .btn-dark:hover {
     background: #333 !important;
     border-color: #333 !important;
+}
+
+/* ===== FIX: Button hover text color (black background, black text bug) =====
+   Root cause was the old "a, a:hover, a:focus { color:#000 !important; }"
+   rule above, which forced EVERY link's hover/focus text to black,
+   including <a class="btn ...">. That rule has been trimmed to just
+   "a" (default state). The block below guarantees white text on hover
+   for every button variant in the template, and can't be overridden by
+   anything else in this file since it comes last and matches with high
+   specificity. */
+.btn:hover,
+.btn:focus,
+.btn:active,
+a.btn:hover,
+a.btn:focus,
+a.btn:active,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-dark:hover,
+.btn-dark:focus,
+.btn-dark:active,
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn.btn-square:hover,
+.btn.btn-square:focus,
+.btn-sm-square:hover,
+.btn-sm-square:focus,
+.btn-lg-square:hover,
+.btn-lg-square:focus,
+.back-to-top:hover,
+.back-to-top:focus,
+.footer .btn.btn-social:hover,
+.footer .btn.btn-social:focus,
+.team-item .btn:hover,
+.team-item .btn:focus,
+.nav-pills .nav-item .btn:hover,
+.nav-pills .nav-item .btn:focus,
+.nav-pills .nav-item a.btn:hover,
+.nav-pills .nav-item a.btn:focus,
+.header-carousel .owl-nav .owl-prev:hover,
+.header-carousel .owl-nav .owl-next:hover,
+.testimonial-carousel .owl-nav .owl-prev:hover,
+.testimonial-carousel .owl-nav .owl-next:hover {
+    color: #fff !important;
+}
+
+/* Exceptions that intentionally invert to black text on hover
+   (kept exactly as in the original design) */
+.footer .btn.btn-social:hover {
+    color: #000 !important;
+    background: #fff;
+}
+
+.footer .btn.btn-link:hover {
+    color: #fff !important;
+}
+
+/* ===== FIX: Property Agent social icon buttons (Facebook/Twitter/Instagram) =====
+   These circular icon buttons sit on the agent photo as
+   <a class="btn btn-square ..."><i class="fab fa-..."></i></a>.
+   Default state: white circle, black icon (readable).
+   Bug: on hover the button background turns black (from Bootstrap's
+   .btn-light:hover / .btn-square:hover styles), but the icon color was
+   still being forced black by the earlier "a { color:#000 !important; }"
+   rule, so the icon vanished into the black circle.
+   Fix: force black icon + white circle by default, and swap to white
+   icon + black circle on hover/focus. Selector specificity here is
+   higher than the plain "a" rule, so it wins without touching anything
+   else on the page. */
+.team-item .btn-square,
+.team-item .btn-sm-square,
+.team-item .btn-lg-square {
+    background: #fff !important;
+    border: 1px solid #000 !important;
+    color: #000 !important;
+    transition: .3s;
+}
+
+.team-item .btn-square i,
+.team-item .btn-sm-square i,
+.team-item .btn-lg-square i {
+    color: #000 !important;
+    transition: .3s;
+}
+
+.team-item .btn-square:hover,
+.team-item .btn-square:focus,
+.team-item .btn-sm-square:hover,
+.team-item .btn-sm-square:focus,
+.team-item .btn-lg-square:hover,
+.team-item .btn-lg-square:focus {
+    background: #000 !important;
+    border-color: #000 !important;
+    color: #fff !important;
+}
+
+.team-item .btn-square:hover i,
+.team-item .btn-square:focus i,
+.team-item .btn-sm-square:hover i,
+.team-item .btn-sm-square:focus i,
+.team-item .btn-lg-square:hover i,
+.team-item .btn-lg-square:focus i {
+    color: #fff !important;
 }
