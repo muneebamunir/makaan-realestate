@@ -567,3 +567,48 @@ section .border {
     padding-right: 0;
     border-right: none;
 }
+/* ===== Force ALL headings/subheadings/text to Black ===== */
+h1, h2, h3, h4, h5, h6,
+.display-5, .display-6,
+h1 span, h2 span, h3 span, h4 span, h5 span, h6 span,
+.navbar-brand, .navbar-brand h1,
+a, a:hover, a:focus,
+.nav-link, .dropdown-item,
+.fw-bold {
+    color: #000 !important;
+}
+
+/* Keep footer links and buttons readable (white bg is dark) */
+.footer a,
+.footer .btn,
+.footer h5,
+.btn-primary,
+.btn-dark,
+.btn.btn-square,
+.back-to-top,
+.bg-primary,
+.bg-dark {
+    color: #fff !important;
+}
+
+/* Keep dropdown menu items visible on white dropdown background */
+.dropdown-menu .dropdown-item {
+    color: #000 !important;
+}
+/* Fix: Keep "Featured" (active pill button) text white on its black background */
+.nav-pills .nav-item a.btn.active,
+.nav-pills .nav-item a.btn.active:hover,
+.nav-pills .nav-item a.btn.active:focus {
+    color: #fff !important;
+}
+/* Force "Get Appointment" (btn-dark) background to pure black */
+.btn-dark {
+    background: #000 !important;
+    border-color: #000 !important;
+    color: #fff !important;
+}
+
+.btn-dark:hover {
+    background: #333 !important;
+    border-color: #333 !important;
+}
