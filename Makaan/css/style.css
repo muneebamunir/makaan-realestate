@@ -305,13 +305,24 @@ a:hover{
 }
 
 
-/*** Category (Property Types) ***/
-
-/* Outer card background: overrides Bootstrap's bg-light (customized in this
-   template to a light green tint) with our theme's light gray */
-.cat-item.bg-light {
+/*** Global bg-light override ***/
+/* This template's bootstrap.min.css was customized so .bg-light renders as a
+   light green tint. .bg-light is reused on: Category cards, the Call to
+   Action wrapper, and Testimonial cards — overriding it here once fixes all
+   three sections instead of patching each one individually. */
+.bg-light {
     background: var(--light) !important;
 }
+
+/* The Call to Action white inner box has an INLINE style teal border
+   (style="border: 1px dashed rgba(0, 185, 142, .3)") baked into the HTML.
+   Inline styles beat normal CSS, so !important is required here to win. */
+.bg-light > .bg-white {
+    border-color: #ddd !important;
+}
+
+
+/*** Category (Property Types) ***/
 
 .cat-item div {
     background: var(--light);
