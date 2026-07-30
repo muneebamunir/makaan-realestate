@@ -305,9 +305,16 @@ a:hover{
 }
 
 
-/*** Category ***/
+/*** Category (Property Types) ***/
+
+/* Outer card background: overrides Bootstrap's bg-light (customized in this
+   template to a light green tint) with our theme's light gray */
+.cat-item.bg-light {
+    background: var(--light) !important;
+}
+
 .cat-item div {
-    background: #FFFFFF;
+    background: var(--light);
     border: 1px dashed #000;
     transition: .5s;
 }
@@ -322,6 +329,16 @@ a:hover{
 }
 
 .cat-item:hover div * {
+    color: #FFFFFF !important;
+}
+
+/* "123 Properties" text: plain <span> with no class, picking up a green
+   color from bootstrap.min.css by default — force it to match theme */
+.cat-item span {
+    color: var(--secondary) !important;
+}
+
+.cat-item:hover span {
     color: #FFFFFF !important;
 }
 
